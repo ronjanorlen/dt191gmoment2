@@ -1,0 +1,31 @@
+@model dt191gmoment2.Models.EquipmentModel // Importera och använd utrustningsmodell
+@{
+    ViewData["Title"] = "Utrustning";
+}
+
+<div class="container">
+    <h1 class="display-4">Utrustning</h1>
+    <p>Detta är utrustnings-sidan</p>
+
+    <form method="post">
+        <div class="mb-3">
+            <label asp-for="FirstName" class="form-label">Namn:</label>
+            <input asp-for="FirstName" class="form-control" placeholder="Ange ditt namn" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="SkiSnowboard" class="form-label">Skidor/Snowboard:</label>
+            <input asp-for="SkiSnowboard" class="form-control" placeholder="Skid-/snowboardmodell" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="EquipLength" class="form-label">Längd:</label>
+            <input asp-for="EquipLength" class="form-control" placeholder="Längd på din utrustning (cm)" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Binding" class="form-label">Bindning:</label>
+            <input asp-for="Binding" class="form-control" placeholder="Vilken bindning du använder" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Lägg till utrustning</button>
+    </form>
+</div>
