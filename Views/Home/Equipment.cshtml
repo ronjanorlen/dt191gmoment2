@@ -8,24 +8,27 @@
     <p>Detta är utrustnings-sidan</p>
 
     <form method="post">
+        <!-- Felmeddelanden -->
+        <div asp-validation-summary="All" class="alert alert-danger" role="alert"></div>
         <div class="mb-3">
-            <label asp-for="FirstName" class="form-label">Namn:</label>
+            <label asp-for="FirstName" class="form-label"></label>
             <input asp-for="FirstName" class="form-control" placeholder="Ange ditt namn" />
+            <span asp-validation-for="FirstName"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="SkiSnowboard" class="form-label">Skidor/Snowboard:</label>
+            <label asp-for="SkiSnowboard" class="form-label"></label>
             <input asp-for="SkiSnowboard" class="form-control" placeholder="Skid-/snowboardmodell" />
         </div>
         <div class="mb-3">
-            <label asp-for="EquipLength" class="form-label">Längd:</label>
+            <label asp-for="EquipLength" class="form-label"></label>
             <input asp-for="EquipLength" class="form-control" placeholder="Längd på din utrustning (cm)" />
         </div>
 
         <div class="mb-3">
-            <label asp-for="Binding" class="form-label">Bindning:</label>
+            <label asp-for="Binding" class="form-label"></label>
             <input asp-for="Binding" class="form-control" placeholder="Vilken bindning du använder" />
         </div>
 
-        <button type="submit" class="btn btn-primary">Lägg till utrustning</button>
+        <input type="submit" class="btn btn-primary" value="Lägg till utrustning">
     </form>
 </div>

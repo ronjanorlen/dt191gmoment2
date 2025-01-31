@@ -1,8 +1,14 @@
-﻿@{
+﻿@model List<dt191gmoment2.Models.EquipmentModel> // Lista med utrustningsmodellen 
+@{
     ViewData["Title"] = "Hem";
 }
 
 <div class="text-center">
     <h1 class="display-4">Startsida</h1>
     <p>Detta är startsidan.</p>
+    <ul>
+        @foreach(var equipment in Model) {
+            <li>@equipment.FirstName - @equipment.SkiSnowboard - @equipment.EquipLength - @equipment.Binding </li>
+        }
+    </ul>
 </div>

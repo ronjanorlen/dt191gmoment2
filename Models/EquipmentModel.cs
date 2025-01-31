@@ -8,18 +8,23 @@ public class EquipmentModel
     // Properties
 
     // Namn
-    [Required]
-    public required string FirstName { get; set; } 
+    [Required(ErrorMessage = "Ange ditt namn")] // DataAnnotation - kräver att fält fylls i 
+    [Display(Name = "Ditt namn")] // label 
+    public string? FirstName { get; set; } 
 
     // Skida eller snowboard 
-    [Required]
-    public required string SkiSnowboard { get; set; } 
+    [Required(ErrorMessage = "Ange skid-/snowboardmodell")] // DataAnnotation - kräver att fält fylls i 
+    [Display(Name = "Utrustning")] // label 
+    public string? SkiSnowboard { get; set; } 
 
     // Längd på utrustning
-    [Required]
-    public required int EquipLength { get; set; } 
+    [Required(ErrorMessage = "Ange längd på utrustningen")] // DataAnnotation - kräver att fält fylls i 
+    [Display(Name = "Längd")] // label 
+    [MaxLength(3)] // max 3 tecken 
+    public int? EquipLength { get; set; } 
 
     // Bindning 
-    [Required]
-    public required string Binding { get; set; } 
+    [Required(ErrorMessage = "Ange vilken bindning du använder")] // DataAnnotation - kräver att fält fylls i 
+    [Display(Name = "Bindning")] // label 
+    public string? Binding { get; set; } 
 }
