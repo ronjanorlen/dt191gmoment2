@@ -18,10 +18,10 @@ public class EquipmentModel
     public string? SkiSnowboard { get; set; } 
 
     // Längd på utrustning
-    [Required(ErrorMessage = "Ange längd på utrustningen")] // DataAnnotation - kräver att fält fylls i 
+    [Required(ErrorMessage = "Ange längd på utrustning")] // DataAnnotation - kräver att fält fylls i 
     [Display(Name = "Längd")] // label 
-    [MaxLength(3)] // max 3 tecken 
-    public int? EquipLength { get; set; } 
+    [Range(1, 999, ErrorMessage = "Längd på utrustning måste vara mellan 1 och 999cm")]
+    public int? EquipLength { get; set; }  = 0; // Standardvärde
 
     // Bindning 
     [Required(ErrorMessage = "Ange vilken bindning du använder")] // DataAnnotation - kräver att fält fylls i 

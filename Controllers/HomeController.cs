@@ -37,9 +37,10 @@ public class HomeController : Controller
     }
 
     // Ta emot data från formuläret 
-    [HttpPost]
+    [HttpPost("/utrustning")]
+    // Ta emot instans av formuläret 
     public IActionResult Equipment(EquipmentModel model)
-    { // Ta emot instans av formuläret 
+    { 
         // Validera input 
         if (ModelState.IsValid)
         // Korrekt ifyllt
