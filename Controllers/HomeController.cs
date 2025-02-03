@@ -15,32 +15,53 @@ public class HomeController : Controller
         // Deserialize json 
         var equipment = JsonSerializer.Deserialize<List<EquipmentModel>>(jsonStr);
 
-        return View(equipment); // Returnera vy 
+        ViewBag.Hello = "Välkommen till fjällkompisar!"; // Välkomstmeddelande med ViewBag 
+        ViewBag.MyName = HttpContext.Session.GetString("MyName"); // Hämta ev inmatat namn med ViewBag
+
+        return View(equipment); // Returnera vy med skidutrustning
+    }
+
+    // Formulär för att fylla i sitt namn 
+    [HttpPost]
+    public IActionResult SaveMe(string myName)
+    {
+        if (!string.IsNullOrWhiteSpace(myName))
+        {
+            // Spara namn i session 
+            HttpContext.Session.SetString("MyName", myName);
+        }
+
+        return RedirectToAction("Index");
     }
 
     // Om-sida
 
-    [HttpGet("/om")] // Routing till om-sida
+    [Route("/om")] // Routing till om-sida
 
     public IActionResult About()
     {
+        ViewBag.MyName = HttpContext.Session.GetString("MyName"); // Hämta inmatat namn
+
         return View(); // Returnera vy
     }
 
     // Utrustning-sida 
 
-    [HttpGet("/utrustning")] // Routing till utrustning-sida
+    [Route("/utrustning")] // Routing till utrustning-sida
 
     public IActionResult Equipment()
     {
+        ViewBag.MyName = HttpContext.Session.GetString("MyName"); // Hämta inmatat namn 
         return View(); // Returnera vy 
     }
 
     // Ta emot data från formuläret 
-    [HttpPost("/utrustning")]
+    [HttpPost]
+    [Route("/utrustning")] // Routing till utrustning-sida
     // Ta emot instans av formuläret 
     public IActionResult Equipment(EquipmentModel model)
-    { 
+    {
+        ViewBag.MyName = HttpContext.Session.GetString("MyName"); // Hämta inmatat namn
         // Validera input 
         if (ModelState.IsValid)
         // Korrekt ifyllt
@@ -64,17 +85,7 @@ public class HomeController : Controller
 
             return RedirectToAction("Index", "Home"); // Returnera startsidan 
         }
-        else
-        {
-            // Ej korrekt ifyllt 
-        }
+
         return View(); // Returnera vy
     }
-
-
-    // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    // public IActionResult Error()
-    // {
-    //     return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    // }
 }

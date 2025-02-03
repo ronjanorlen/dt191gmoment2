@@ -35,13 +35,18 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <div class="text-center">
+            @if (!string.IsNullOrEmpty(ViewBag.myName)) {
+                <h2>Hej @ViewBag.myName!</h2>
+            }
+        </div>
+        <main>
             @RenderBody() <!-- Rendera sidinnehåll -->
         </main>
     </div>
 
-    <footer class="border-top footer text-muted text-center">
-        <div class="container">
+    <footer class="footer text-center">
+        <div>
             &copy; Ronja Norlén DT191G, Moment 2 - 2025 
         </div>
     </footer>

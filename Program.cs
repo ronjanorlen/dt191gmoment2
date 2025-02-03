@@ -1,6 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews(); // Aktivera MVC-mönster
+builder.Services.AddSession(); // Aktivera session
 
 var app = builder.Build(); // Bygg applikationen
 
@@ -12,6 +13,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseSession(); // Använd session
 app.UseHttpsRedirection();
 app.UseRouting(); // Routing
 

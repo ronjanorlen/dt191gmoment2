@@ -1,14 +1,47 @@
-﻿@model List<dt191gmoment2.Models.EquipmentModel> // Lista med utrustningsmodellen 
+﻿@model List<dt191gmoment2.Models.EquipmentModel> // Lista med utrustningsmodellen
 @{
     ViewData["Title"] = "Hem";
 }
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4">@ViewBag.Hello</h1>
+         <div>
+            @if (string.IsNullOrEmpty(ViewBag.MyName))
+            {
+                <form class="StartForm" method="post" asp-action="SaveMe">
+                    <label for="myName">Vad heter du?</label>
+                    <input type="text" name="MyName" required />
+                    <button class="btn btn-outline-primary" type="submit">Spara</button>
+                </form>
 
-<div class="text-center">
-    <h1 class="display-4">Startsida</h1>
-    <p>Detta är startsidan.</p>
-    <ul>
-        @foreach(var equipment in Model) {
-            <li>@equipment.FirstName - @equipment.SkiSnowboard - @equipment.EquipLength - @equipment.Binding </li>
-        }
-    </ul>
+                
+            }
+        </div>
+        <p>Vi alla älskar väl vintern och det finns många sätt att ta sig ned på fjället när snön har fallit.
+            Här kan du se vad andra fjällkompisar helst åker på under vintersäsongen, kanske får du lite inspiration
+            till att testa något nytt?</p>
+
+        <div class="accordion" id="accordionExample">
+            @foreach (var equipment in Model.Select((item, index) => new { item, index }))
+            {
+                var uniqueId = $"collapse{equipment.index}"; // Skapa ID för varje post
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#@uniqueId" aria-expanded="false" aria-controls="@uniqueId">
+                            @equipment.item.FirstName
+                        </button>
+                    </h2>
+                    <div id="@uniqueId" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p><strong>Skidor/Snowboard:</strong> @equipment.item.SkiSnowboard</p>
+                            <p><strong>Längd på utrustning:</strong> @equipment.item.EquipLength cm</p>
+                            <p><strong>Bindning:</strong> @equipment.item.Binding</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 </div>
