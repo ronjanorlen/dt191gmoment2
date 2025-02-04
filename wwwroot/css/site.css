@@ -1,38 +1,37 @@
-
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
+/* Bannerbild */
+.banner {
   position: relative;
-  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-height: 450px;
+  padding: 0 1em;
+  overflow: hidden;
 }
-
-body {
-  background-color: #e6f2ff;
-}
-
-
-
 
 /* Felmeddelanden */
 span {
   color: red;
 }
 
+/* Huvudinnehåll */
 main {
   width: 70%;
   margin: 1em auto;
-  padding: 2em;
+  text-align: center;
+  min-height: 100vh;
 }
 
+/* Formulär för utrustning */
 .EquipForm {
   padding: 1.4em;
   background-color: #dfeaf5;
   border-radius: 8px;
+  text-align: start;
 }
 
+/* Formulär för att fylla i namn */
 .StartForm {
   margin: 1em auto;
 }
@@ -51,20 +50,38 @@ main {
   padding: 6px 18px;
 }
 
+/* Bild på om-sida */
+.skibuddies img {
+  display: block;
+  width: 100%;
+}
+
 
 footer {
-  background-color: #202122;
+  background-color: #212529;
   color:aliceblue;
+  padding: 1em;
+  text-align: center;
 }
 
 @media (max-width: 991px) {
   main {
     width: 100%;
     margin: 0 auto;
-    padding: 0;
   }
 
   form {
     margin-bottom: 4em;
+  }
+}
+
+@media (max-width: 768px) {
+  
+  .StartForm {
+    display: flex;
+    flex-direction: column;
+  }
+  .StartForm button {
+    margin-top: 10px;
   }
 }
