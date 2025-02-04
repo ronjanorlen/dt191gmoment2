@@ -62,6 +62,7 @@ footer {
   color:aliceblue;
   padding: 1em;
   text-align: center;
+  margin-top: 10px;
 }
 
 @media (max-width: 991px) {
